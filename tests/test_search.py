@@ -16,25 +16,16 @@ class SearchTest(unittest.TestCase):
         self.assertEqual(0, search.min_search([LessThanableElement(abs(i)) for i in range(-100, 99)]).val)
 
     def test_min_search_unsubscriptable_should_fail(self):
-        try:
+        with self.assertRaises(AssertionError):
             search.min_search(UnscubscriptableClassWithLen())
-            raise AssertionError("should have failed on unsubscriptable data")
-        except AssertionError:
-            pass
 
     def test_min_search_no_len(self):
-        try:
+        with self.assertRaises(AssertionError):
             search.min_search(SubscriptableClassWithoutLen())
-            raise AssertionError("should have failed as data does not providing __len__")
-        except AssertionError:
-            pass
 
     def test_min_search_empty_data(self):
-        try:
+        with self.assertRaises(AssertionError):
             search.min_search([])
-            raise AssertionError("should have failed on empty data")
-        except AssertionError:
-            pass
 
     def test_min_search_edge_cases(self):
         # minimum at end of strictly monotonically decreasing list
@@ -51,9 +42,6 @@ class SearchTest(unittest.TestCase):
         self.assertEqual(1, search.min_search([1, 2]))
 
     def test_min_search_unexpected_data(self):
-        try:
+        with self.assertRaises(ValueError):
             search.min_search([10, 9, 8, 8, 8, 7, 5, 3, 4, 5, 5, 6, 6, 7, 8, 9, 10, 10, 11])
-            raise AssertionError("Should have failed as elements are not strictly monotonically "
-                                 "decreasing then increasing")
-        except ValueError:
-            pass
+

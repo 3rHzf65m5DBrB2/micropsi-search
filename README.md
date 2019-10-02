@@ -7,7 +7,7 @@ necessarily integers, but any objects implementing `__lt__` method. Therefore th
 element which is less than all other elements in the same set of data.
 
 A strictly monotonically decreasing data is a set of elements such that `data[0] > data[1] ...  > data[n-1] > data[n]`.
-In contracts, a strictly monotonically increasing data is a set of elements such that 
+In contrast, a strictly monotonically increasing data is a set of elements such that 
 `data[0] < data[1] ... < data[n-1]] < data[n]`. For both cases, no two consecutive elements are equal.
 
 The function applies a binary search on the data set, slightly modified to support those properties given about the data.
@@ -46,7 +46,7 @@ search.min_search("edcbabcdefghijklmnopqrstxz")
 
 You can run the tests manually against your desired python version
 ```
-python -m unittests
+python -m unittest
 ```
 
 or using Tox
